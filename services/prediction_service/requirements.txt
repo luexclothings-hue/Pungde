@@ -1,0 +1,9 @@
+fastapi
+uvicorn[standard]
+pandas
+xgboost
+scikit-learn==1.6.1
+joblib
+geopy
+earthengine-api
+google-api-python-client
