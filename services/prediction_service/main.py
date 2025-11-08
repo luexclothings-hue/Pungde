@@ -60,7 +60,10 @@ class PredictionResponse(BaseModel):
     status: str
     predicted_yield_tons_per_hectare: float
     location_details: str
+    latitude: float
+    longitude: float
     crop_name: str
+    crop_requirements: dict
     notes: str
 
 
@@ -144,6 +147,9 @@ async def predict_yield(request: PredictionRequest):
             )
         
         requirement_vector = crop_vectors_df.loc[[crop_name_lower]][REQUIREMENT_COLS]
+        
+        # Extract crop requirements as a dictionary for the response
+        crop_requirements_dict = crop_vectors_df.loc[crop_name_lower][REQUIREMENT_COLS].to_dict()
 
         # Step 3: Earth Engine Environmental Data
         point = ee.Geometry.Point(lon, lat)
@@ -188,7 +194,10 @@ async def predict_yield(request: PredictionRequest):
             status="success",
             predicted_yield_tons_per_hectare=round(final_yield, 2),
             location_details=location.address,
+            latitude=lat,
+            longitude=lon,
             crop_name=request.crop_name,
+            crop_requirements=crop_requirements_dict,
             notes="Prediction based on 2020 environmental data, matching the model's training period."
         )
 
