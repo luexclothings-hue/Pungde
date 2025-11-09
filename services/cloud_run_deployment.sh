@@ -1,7 +1,12 @@
 adk deploy cloud_run \
   --project=pungde-477205 \
   --region=us-central1 \
-  --service_name=adk-demo \
+  --service_name=pungde-ai\
   --app_name=pungde_agent \
   --with_ui \
+  --allow_origins=* \
   .
+
+gcloud builds submit --tag gcr.io/pungde-477205/pungda-predict-service 
+
+gcloud run deploy pungda-predict-service   --image gcr.io/pungde-477205/pungda-predict-service   --platform managed   --region us-central1   --allow-unauthenticated
