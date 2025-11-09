@@ -5,7 +5,7 @@ from google.adk.tools import google_search
 from . import prompt
 
 # Configuration constants
-GEMINI_MODEL = "gemini-2.5-flash"
+GEMINI_MODEL = "gemini-2.0-flash-live-preview-04-09"
 DESCRIPTION = "Grow anyway strategist that provides practical techniques and methods (polyhouse, irrigation, soil amendments, protective structures) to help farmers grow crops in unsuitable or challenging conditions"
 
 # Set logging
@@ -20,7 +20,6 @@ try:
         name="grow_anyways_agent",
         description=(DESCRIPTION),
         instruction=prompt.GROW_ANYWHERE_PROMPT,
-        stream=True, 
         output_key="agrianalysis",
         tools=[
             google_search

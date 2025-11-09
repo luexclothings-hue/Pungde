@@ -9,7 +9,7 @@ import os
 logger = logging.getLogger(__name__)
 
 # Configuration constants
-GEMINI_MODEL = "gemini-2.5-flash"
+GEMINI_MODEL = "gemini-2.0-flash-live-preview-04-09
 DESCRIPTION = "Agricultural analysis tool that retrieves crop yield predictions, location coordinates, and crop requirements for a given crop and location"
 
 def get_crop_yield_prediction(crop_name: str, location_name: str) -> dict:
@@ -46,7 +46,6 @@ try:
         name="agri_analyzer_agent",
         description=(DESCRIPTION),
         instruction=prompt.AGRI_ANALYZER_PROMPT,
-        stream=True, 
         output_key="agrianalysis",
         tools=[
             get_crop_yield_prediction

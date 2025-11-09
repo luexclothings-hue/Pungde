@@ -5,7 +5,7 @@ from google.adk.tools import google_search
 from . import prompt
 
 # Configuration constants
-GEMINI_MODEL = "gemini-2.5-flash"
+GEMINI_MODEL = "gemini-2.0-flash-live-preview-04-09"
 DESCRIPTION = "Yield improvement expert that provides comprehensive strategies to maximize crop production including seed selection, spacing, fertilizer schedules, irrigation, and pest management"
 
 # Set logging
@@ -20,7 +20,6 @@ try:
         name="yield_improvement_agent",
         description=(DESCRIPTION),
         instruction=prompt.YIELD_IMPROVEMENT_PROMPT,
-        stream=True, 
         output_key="agrianalysis",
         tools=[
             google_search
