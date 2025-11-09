@@ -20,6 +20,7 @@ try:
         name="yield_improvement_agent",
         description=(DESCRIPTION),
         instruction=prompt.YIELD_IMPROVEMENT_PROMPT,
+        stream=True, 
         output_key="agrianalysis",
         tools=[
             google_search

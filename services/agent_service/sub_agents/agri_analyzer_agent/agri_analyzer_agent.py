@@ -46,6 +46,7 @@ try:
         name="agri_analyzer_agent",
         description=(DESCRIPTION),
         instruction=prompt.AGRI_ANALYZER_PROMPT,
+        stream=True, 
         output_key="agrianalysis",
         tools=[
             get_crop_yield_prediction
