@@ -20,6 +20,7 @@ try:
         name="grow_anyways_agent",
         description=(DESCRIPTION),
         instruction=prompt.GROW_ANYWHERE_PROMPT,
+        stream=True, 
         output_key="agrianalysis",
         tools=[
             google_search
