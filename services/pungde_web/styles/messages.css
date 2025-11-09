@@ -118,6 +118,25 @@
   padding: 0;
 }
 
+/* Image styling inside bubbles */
+.bubble img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  margin: 12px 0;
+  border: 1px solid rgba(255,255,255,0.1);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  display: block;
+}
+
+.bubble img:first-child {
+  margin-top: 0;
+}
+
+.bubble img:last-child {
+  margin-bottom: 0;
+}
+
 /* Typing Indicator */
 .typing-bubble {
   display: flex;
