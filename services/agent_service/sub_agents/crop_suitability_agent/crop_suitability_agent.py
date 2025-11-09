@@ -4,7 +4,9 @@ import os
 import requests
 from datetime import datetime, timedelta
 from google.adk.agents import LlmAgent
+from google.adk.tools.agent_tool import AgentTool
 from . import prompt
+from ..image_generator_agent.image_generator_agent import image_generator_agent
 
 # Set logging
 logger = logging.getLogger(__name__)
@@ -92,7 +94,8 @@ try:
         instruction=prompt.CROP_SUITABILITY_PROMPT,
         output_key="agrianalysis",
         tools=[
-            get_agroclimate_overview
+            get_agroclimate_overview,
+            AgentTool(image_generator_agent)
         ]
     )
     logger.info(f"✅ Agent '{crop_suitability_agent.name}' created using model '{GEMINI_MODEL}'.")

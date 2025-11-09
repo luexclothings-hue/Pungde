@@ -3,7 +3,9 @@ import os
 
 from google.adk.agents import LlmAgent
 from google.adk.tools import google_search
+from google.adk.tools.agent_tool import AgentTool
 from . import prompt
+from ..image_generator_agent.image_generator_agent import image_generator_agent
 
 # Set logging
 logger = logging.getLogger(__name__)
@@ -23,7 +25,8 @@ try:
         instruction=prompt.GROW_ANYWHERE_PROMPT,
         output_key="agrianalysis",
         tools=[
-            google_search
+            google_search,
+            AgentTool(image_generator_agent)
         ]
     )
     logger.info(f"✅ Agent '{grow_anyways_agent.name}' created using model '{GEMINI_MODEL}'.")

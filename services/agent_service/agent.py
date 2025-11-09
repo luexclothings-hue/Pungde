@@ -9,6 +9,7 @@ from .sub_agents.agri_analyzer_agent.agri_analyzer_agent import agri_analyzer_ag
 from .sub_agents.crop_suitability_agent.crop_suitability_agent import crop_suitability_agent
 from .sub_agents.grow_anyways_agent.grow_anyways_agent import grow_anyways_agent
 from .sub_agents.yield_improvement_agent.yield_improvement_agent import yield_improvement_agent
+from .sub_agents.image_generator_agent.image_generator_agent import image_generator_agent
 # Set logging
 logger = logging.getLogger(__name__)
 
@@ -24,7 +25,7 @@ if agri_analyzer_agent:
         model=GEMINI_MODEL, 
         description=(DESCRIPTION),
         instruction=prompt.PUNGDE_AGENT_PROMPT,
-        tools=[AgentTool(agri_analyzer_agent), AgentTool(crop_suitability_agent), AgentTool(grow_anyways_agent), AgentTool(yield_improvement_agent)],
+        tools=[AgentTool(agri_analyzer_agent), AgentTool(crop_suitability_agent), AgentTool(grow_anyways_agent), AgentTool(yield_improvement_agent), AgentTool(image_generator_agent)],
     )
     logger.info(f"✅ Agent '{root_agent.name}' created using model '{GEMINI_MODEL}'.")
 else:
