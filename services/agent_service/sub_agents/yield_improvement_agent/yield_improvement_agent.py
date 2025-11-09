@@ -5,7 +5,7 @@ from google.adk.tools import google_search
 from . import prompt
 
 # Configuration constants
-GEMINI_MODEL = "gemini-2.5-flash"
+GEMINI_MODEL = "gemini-2.5-pro"
 DESCRIPTION = "Yield improvement expert that provides comprehensive strategies to maximize crop production including seed selection, spacing, fertilizer schedules, irrigation, and pest management"
 
 # Set logging

@@ -9,7 +9,7 @@ import os
 logger = logging.getLogger(__name__)
 
 # Configuration constants
-GEMINI_MODEL = "gemini-2.5-flash"
+GEMINI_MODEL = "gemini-2.5-pro"
 DESCRIPTION = "Agricultural analysis tool that retrieves crop yield predictions, location coordinates, and crop requirements for a given crop and location"
 
 def get_crop_yield_prediction(crop_name: str, location_name: str) -> dict:
@@ -20,7 +20,7 @@ def get_crop_yield_prediction(crop_name: str, location_name: str) -> dict:
         dict with keys: status, predicted_yield_tons_per_hectare, location_details, 
         crop_name, crop_requirements (N, P, K, temperature, humidity, ph, rainfall), notes
     """
-    url = os.getenv("PREDICT_API_URL", "http://127.0.0.1:8001/predict")
+    url = os.getenv("PREDICTION_SERVICE_URL", "http://127.0.0.1:8001/predict")
     try:
         resp = requests.post(url, json={"crop_name": crop_name, "location_name": location_name}, timeout=30)
         if resp.status_code == 200:
