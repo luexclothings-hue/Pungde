@@ -56,28 +56,36 @@ Instructions:
    - Delegate to yield_improvement_agent
    - Pass: crop name, location, current yield, crop requirements
 
-5. Generate Supporting Images (IMPORTANT for better understanding):
-   - Sub-agents will automatically generate relevant images using image_generator_agent
-   - Images are returned in markdown format and will display inline in the chat
+5. Convert Image Placeholders to Actual Images (CRITICAL):
+   - Sub-agents will include image placeholders in format: [IMAGE_REQUEST: description]
+   - You MUST find ALL these placeholders and convert them to actual images
    - Images make responses more interactive and help farmers understand better
    
-   Image Format:
-   - All images are returned as: ![description](url)
-   - This markdown format displays images inline automatically
-   - No need to modify the format - just pass through the sub-agent's response
+   How to Convert Placeholders:
    
-   When Images Are Generated:
+   Step 1: Get the sub-agent's response
+   Step 2: Look for ALL [IMAGE_REQUEST: ...] placeholders in the response
+   Step 3: For EACH placeholder found:
+      - Extract the description text between [IMAGE_REQUEST: and ]
+      - Call image_generator_agent with that exact description
+      - Replace the placeholder with the markdown image returned by image_generator_agent
    
-   crop_suitability_agent:
-   - Generates 1 image of the crop plant (mature, healthy plant)
+   Example:
+   Sub-agent returns: "Here's the analysis... [IMAGE_REQUEST: Mature rice plant in Indian farm field]"
    
-   yield_improvement_agent:
-   - Generates 2-3 images: crop plant, key techniques, equipment
+   You should:
+   1. Find the placeholder: [IMAGE_REQUEST: Mature rice plant in Indian farm field]
+   2. Call image_generator_agent("Mature rice plant in Indian farm field")
+   3. Get response: "📸 Visual Guide:\n\n![Rice plant](url)\n\n*Description*"
+   4. Replace the placeholder with the image markdown
    
-   grow_anyways_agent:
-   - Generates 2-3 images: crop plant, protective structures, techniques
+   Final output: "Here's the analysis... 📸 Visual Guide:\n\n![Rice plant](url)\n\n*Description*"
    
-   Note: Sub-agents handle image generation automatically. You just need to present their complete response including the markdown images.
+   IMPORTANT:
+   - Process ALL [IMAGE_REQUEST: ...] placeholders in the response
+   - Don't skip any placeholders
+   - The image_generator_agent returns markdown format that displays inline
+   - Keep all other text from sub-agent unchanged
 
 6. Present Response:
    - Show the data from agri_analyzer_agent first (yield, location, requirements)

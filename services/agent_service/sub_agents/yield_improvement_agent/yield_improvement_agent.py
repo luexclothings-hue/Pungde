@@ -3,9 +3,7 @@ import os
 
 from google.adk.agents import LlmAgent
 from google.adk.tools import google_search
-from google.adk.tools.agent_tool import AgentTool
 from . import prompt
-from ..image_generator_agent.image_generator_agent import image_generator_agent
 
 # Configuration constants
 GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-2.5-flash")
@@ -25,8 +23,7 @@ try:
         instruction=prompt.YIELD_IMPROVEMENT_PROMPT,
         output_key="agrianalysis",
         tools=[
-            google_search,
-            AgentTool(image_generator_agent)
+            google_search
         ]
     )
     logger.info(f"✅ Agent '{yield_improvement_agent.name}' created using model '{GEMINI_MODEL}'.")
