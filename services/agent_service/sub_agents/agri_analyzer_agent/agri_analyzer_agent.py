@@ -9,7 +9,7 @@ import os
 logger = logging.getLogger(__name__)
 
 # Configuration constants
-GEMINI_MODEL = "gemini-2.5-flash"
+GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-2.5-flash")
 DESCRIPTION = "Agricultural analysis tool that retrieves crop yield predictions, location coordinates, and crop requirements for a given crop and location"
 
 def get_crop_yield_prediction(crop_name: str, location_name: str) -> dict:

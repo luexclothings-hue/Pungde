@@ -9,7 +9,7 @@ from . import prompt
 logger = logging.getLogger(__name__)
 
 # Configuration constants
-GEMINI_MODEL = "gemini-2.5-flash"
+GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-2.5-flash")
 DESCRIPTION = "Crop suitability expert that analyzes and explains whether a crop can grow successfully in a specific location based on climate data (temperature, rainfall, humidity)"
 
 def get_agroclimate_overview(lat: float, lon: float) -> dict:
