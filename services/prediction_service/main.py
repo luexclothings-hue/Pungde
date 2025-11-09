@@ -1,5 +1,3 @@
-# main.py
-
 import os
 import numpy as np
 import requests
@@ -65,8 +63,6 @@ class PredictionResponse(BaseModel):
     crop_name: str
     crop_requirements: dict
     notes: str
-
-
 
 # --- API Endpoint ---
 def geocode_location(location_name: str):
@@ -154,7 +150,7 @@ async def predict_yield(request: PredictionRequest):
         # Step 3: Earth Engine Environmental Data
         point = ee.Geometry.Point(lon, lat)
         image = ee.ImageCollection('GOOGLE/SATELLITE_EMBEDDING/V1/ANNUAL') \
-                  .filterDate('2020-01-01', '2021-01-01') \
+                  .filterDate('2023-01-01', '2024-01-01') \
                   .select(EMBEDDING_COLS) \
                   .filterBounds(point) \
                   .first()
@@ -198,7 +194,7 @@ async def predict_yield(request: PredictionRequest):
             longitude=lon,
             crop_name=request.crop_name,
             crop_requirements=crop_requirements_dict,
-            notes="Prediction based on 2020 environmental data, matching the model's training period."
+            notes="Prediction based on 2023-2024 environmental data."
         )
 
     except HTTPException as http_exc:
