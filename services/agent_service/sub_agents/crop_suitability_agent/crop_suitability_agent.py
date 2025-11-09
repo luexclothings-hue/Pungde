@@ -9,7 +9,7 @@ from . import prompt
 logger = logging.getLogger(__name__)
 
 # Configuration constants
-GEMINI_MODEL = "gemini-2.5-flash"
+GEMINI_MODEL = "gemini-2.0-flash-live-preview-04-09"
 DESCRIPTION = "Crop suitability expert that analyzes and explains whether a crop can grow successfully in a specific location based on climate data (temperature, rainfall, humidity)"
 
 def get_agroclimate_overview(lat: float, lon: float) -> dict:
@@ -89,7 +89,6 @@ try:
         name="crop_suitability_agent",
         description=(DESCRIPTION),
         instruction=prompt.CROP_SUITABILITY_PROMPT,
-        stream=True, 
         output_key="agrianalysis",
         tools=[
             get_agroclimate_overview
