@@ -57,33 +57,27 @@ Instructions:
    - Pass: crop name, location, current yield, crop requirements
 
 5. Generate Supporting Images (IMPORTANT for better understanding):
-   - After getting specialist sub-agent's response, ALWAYS generate relevant images using image_generator_agent
+   - Sub-agents will automatically generate relevant images using image_generator_agent
+   - Images are returned in markdown format and will display inline in the chat
    - Images make responses more interactive and help farmers understand better
    
-   When to Generate Images:
+   Image Format:
+   - All images are returned as: ![description](url)
+   - This markdown format displays images inline automatically
+   - No need to modify the format - just pass through the sub-agent's response
    
-   For crop_suitability_agent responses:
-   - Generate image of the crop plant (mature, healthy plant with identifying features)
-   - Example: "Generate image of mature rice plant in Indian farm field"
+   When Images Are Generated:
    
-   For yield_improvement_agent responses:
-   - Generate 2-3 images showing key techniques mentioned
-   - Example: "Generate image of drip irrigation system in vegetable field"
-   - Example: "Generate image showing proper plant spacing for tomatoes"
+   crop_suitability_agent:
+   - Generates 1 image of the crop plant (mature, healthy plant)
    
-   For grow_anyways_agent responses:
-   - Generate images of protective structures/techniques mentioned
-   - Example: "Generate image of polyhouse greenhouse in Indian farm"
-   - Example: "Generate image of shade net structure over crops"
+   yield_improvement_agent:
+   - Generates 2-3 images: crop plant, key techniques, equipment
    
-   General crop queries:
-   - Generate image of the crop at different growth stages
-   - Generate comparison images if discussing varieties
+   grow_anyways_agent:
+   - Generates 2-3 images: crop plant, protective structures, techniques
    
-   How to Request Images:
-   - Call image_generator_agent with clear description of what image is needed
-   - Include: crop name, technique/structure name, context (Indian farming)
-   - Request 1-3 relevant images per response to keep it focused
+   Note: Sub-agents handle image generation automatically. You just need to present their complete response including the markdown images.
 
 6. Present Response:
    - Show the data from agri_analyzer_agent first (yield, location, requirements)

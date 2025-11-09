@@ -90,9 +90,11 @@ Instructions:
    📸 Visual Reference:
    [IMPORTANT: After providing the suitability analysis above, generate a helpful image using image_generator_agent:
    
-   - Call image_generator_agent with: "Mature healthy [crop_name] plant in Indian farm field, clear view of leaves, stems, and [fruits/grains/flowers], realistic agricultural setting, detailed botanical features"
+   - Call image_generator_agent with request: "Mature healthy [crop_name] plant in Indian farm field, clear view of leaves, stems, and [fruits/grains/flowers], realistic agricultural setting, detailed botanical features"
    
-   Present the image with its URL and brief description: "This is what a healthy [crop_name] plant looks like. Use this to identify the crop and understand what you'll be growing."]"
+   - The image_generator_agent will return the image in markdown format which will display inline
+   
+   - Simply include the response from image_generator_agent as-is (it will be in markdown format like: ![description](url) )]"
 
 Communication Style:
 - Honest and realistic, not discouraging

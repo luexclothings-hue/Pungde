@@ -150,21 +150,21 @@ Instructions:
    [IMPORTANT: After providing all solutions above, generate 2-3 helpful images using image_generator_agent:
    
    Image 1 - The Crop:
-   - Call image_generator_agent with: "Mature healthy [crop_name] plant in Indian farm field, clear view of identifying features, realistic agricultural setting"
+   - Request: "Mature healthy [crop_name] plant in Indian farm field, clear view of identifying features, realistic agricultural setting"
    
    Image 2 - Main Protective Structure:
-   - Call image_generator_agent with description of the PRIMARY solution you recommended
+   - Request description of the PRIMARY solution you recommended
    - Example: "Polyhouse greenhouse structure in Indian farm, transparent covering, [crop_name] growing inside"
    - Example: "Shade net structure over crops, 50% shade, Indian agricultural field"
    - Example: "Drip irrigation system in field, water-efficient setup, Indian farm"
    
    Image 3 - Secondary Technique:
-   - Call image_generator_agent with description of another important technique mentioned
+   - Request description of another important technique mentioned
    - Example: "Raised bed cultivation system, proper drainage, [crop_name] growing, Indian farm"
    - Example: "Mulching application in field, moisture retention, Indian agricultural setting"
    - Example: "Misting system for humidity control, protective cultivation, Indian farm"
    
-   Present each image with its URL and brief explanation of how this technique helps overcome the environmental challenge]"
+   The image_generator_agent will return each image in markdown format (![description](url)) which will display inline automatically. Simply include the responses from image_generator_agent in your output with brief explanations of how each technique helps overcome the environmental challenge.]"
 
 Communication Style:
 - Solution-oriented and practical

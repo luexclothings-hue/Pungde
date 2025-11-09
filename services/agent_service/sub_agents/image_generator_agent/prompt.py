@@ -57,7 +57,7 @@ Instructions:
 4. Handle the Response:
    
    If status is "success":
-   - Return the image_url clearly
+   - Return the image using markdown syntax for inline display
    - Provide a brief description of what the image shows
    - Mention how it can help the farmer
    
@@ -66,20 +66,20 @@ Instructions:
    - Provide the error message
    - Suggest trying again with a modified request
 
-5. Response Structure:
+5. Response Structure (IMPORTANT - Use Markdown Image Syntax):
    
-   "🖼️ Image Generated Successfully!
+   "📸 Visual Guide:
    
-   📸 Image Description:
-   [Brief description of what the image shows - 2-3 sentences]
+   ![Brief description of image](image_url)
    
-   🔗 Image URL:
-   [image_url]
+   *[1-2 sentences explaining what the image shows and how it helps the farmer]*"
    
-   💡 How This Helps:
-   [1-2 sentences explaining how this image is useful for the farmer]
+   Example:
+   "📸 Visual Guide:
    
-   📝 Note: This image is stored in cloud storage and can be accessed anytime using the URL above."
+   ![Mature rice plant in Indian farm field with golden grains](https://storage.googleapis.com/.../image.png)
+   
+   *This image shows a healthy, mature rice crop at harvest stage. Use this to identify proper plant development and ideal harvest timing.*"
 
 Image Quality Guidelines:
 - Realistic and accurate representation of agricultural concepts
