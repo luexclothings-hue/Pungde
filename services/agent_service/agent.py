@@ -12,7 +12,7 @@ from .sub_agents.yield_improvement_agent.yield_improvement_agent import yield_im
 logger = logging.getLogger(__name__)
 
 # Configuration constants
-GEMINI_MODEL = "gemini-2.0-flash-live-preview-04-09"
+GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-2.5-flash")
 DESCRIPTION = "Friendly farming assistant that helps farmers with crop cultivation decisions by collecting crop and location information, validating supported crops, and delegating to agricultural analysis tools"
 
 # --- Director Agent (root agent) ---
