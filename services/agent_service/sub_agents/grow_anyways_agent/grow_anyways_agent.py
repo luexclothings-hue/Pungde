@@ -1,53 +1,32 @@
-# agents/pungde_agent/sub_agents/grow_anyways_agent/grow_anyways_agent.py
-
 import logging
-import os
 
 from google.adk.agents import LlmAgent
-from google.adk.tools import google_search  # Already a built-in ADK Tool
+from google.adk.tools import google_search
 from . import prompt
 
+# Configuration constants
+GEMINI_MODEL = "gemini-2.0-flash-live-preview-04-09"
+DESCRIPTION = "Grow anyway strategist that provides practical techniques and methods (polyhouse, irrigation, soil amendments, protective structures) to help farmers grow crops in unsuitable or challenging conditions"
+
+# Set logging
 logger = logging.getLogger(__name__)
-logger.setLevel(logging.INFO)
 
-# -----------------------------------------------------------------------------
-# MODEL CONFIG (sub-agents = reasoning only → no Live required)
-# -----------------------------------------------------------------------------
-GEMINI_MODEL_SUB_AGENT = os.getenv(
-    "GEMINI_MODEL_SUB_AGENT",
-    "gemini-2.5-flash"   # Optimal: fast, low-cost, strong reasoning
-)
-
-DESCRIPTION = (
-    "Grow-anywhere strategist that provides practical methods such as protective "
-    "structures, soil improvement, microclimate control, irrigation strategies, "
-    "and environmental adaptation to grow crops even in challenging conditions."
-)
-
-# -----------------------------------------------------------------------------
-# LLM SUB-AGENT
-# -----------------------------------------------------------------------------
+# --- Screenplay Agent ---
 grow_anyways_agent = None
-
 try:
     grow_anyways_agent = LlmAgent(
+        # Using a potentially different/cheaper model for a simple task
+        model=GEMINI_MODEL,
         name="grow_anyways_agent",
-        model=GEMINI_MODEL_SUB_AGENT,
-        description=DESCRIPTION,
+        description=(DESCRIPTION),
         instruction=prompt.GROW_ANYWHERE_PROMPT,
-
-        # The model output will be placed under this result key for the parent agent:
-        output_key="grow_anywhere_recommendations",
-
-        # ✅ google_search is already a tool, no wrapping required
-        tools=[google_search],
+        output_key="agrianalysis",
+        tools=[
+            google_search
+        ]
     )
-
-    logger.info(
-        f"✅ Sub-agent '{grow_anyways_agent.name}' initialized using model '{GEMINI_MODEL_SUB_AGENT}'."
-    )
-
+    logger.info(f"✅ Agent '{grow_anyways_agent.name}' created using model '{GEMINI_MODEL}'.")
 except Exception as e:
     logger.error(
-        f"❌ Failed to initialize grow_anyways_agent ({GEMINI_MODEL_SUB_AGENT}). Error: {e}"
+        f"❌ Could not create Agri analyzer agent. Check API Key ({GEMINI_MODEL}). Error: {e}"
     )
