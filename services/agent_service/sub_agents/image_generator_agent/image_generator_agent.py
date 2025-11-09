@@ -13,7 +13,7 @@ logger = logging.getLogger(__name__)
 
 GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-2.5-flash")
 GCP_PROJECT = os.getenv("GOOGLE_CLOUD_PROJECT", "pungde-477205")
-GOOGLE_CLOUD_BUCKET = os.getenv("GCS_BUCKET", "pungde-images")
+GOOGLE_CLOUD_BUCKET = os.getenv("GOOGLE_CLOUD_BUCKET", "pungde-images")
 
 # Initialize Vertex
 if GCP_PROJECT:
