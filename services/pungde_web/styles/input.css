@@ -1,0 +1,60 @@
+/* Input Bar */
+.input-bar {
+  padding: 14px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  display: flex;
+  gap: 12px;
+  background: #0d0f14;
+  flex-shrink: 0;
+}
+
+.input-bar input {
+  flex: 1;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.14);
+  border-radius: 12px;
+  padding: 12px 16px;
+  font-size: 0.95rem;
+  color: #e7e9ea;
+  outline: none;
+  transition: 0.25s;
+}
+
+.input-bar input:focus {
+  border-color: rgba(255,255,255,0.28);
+}
+
+.input-bar input:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Send Button */
+.input-bar button {
+  padding: 10px 20px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.14);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: #fff;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.input-bar button:hover {
+  background: rgba(255,255,255,0.22);
+}
+
+.input-bar button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Send Button Spinner */
+.send-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255,255,255,0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin .9s linear infinite;
+}

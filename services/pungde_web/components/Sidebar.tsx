@@ -1,34 +1,67 @@
 "use client";
 import { useSession } from "@/context/SessionContext";
+import { SavedChat } from "@/lib/chatStorage";
 
-export default function Sidebar() {
-  const { startNewSession } = useSession();
+interface SidebarProps {
+  savedChats: SavedChat[];
+  onChatSelect: (chat: SavedChat) => void;
+  onNewChat: () => void;
+  onDeleteChat: (id: string) => void;
+  isOpen?: boolean;
+}
+
+export default function Sidebar({
+  savedChats,
+  onChatSelect,
+  onNewChat,
+  onDeleteChat,
+  isOpen = false,
+}: SidebarProps) {
+  const { loading } = useSession();
 
   return (
-    <aside className="sidebar">
+    <aside className={`sidebar ${isOpen ? 'open' : ''}`}>
       <div className="sidebar-header">
         <span className="logo-text">Pungde</span>
-        <button className="new-chat-btn" onClick={startNewSession}>+ New Chat</button>
+        <div className="sidebar-header-actions">
+          <button className="new-chat-btn" onClick={onNewChat} disabled={loading}>
+            + New Chat
+          </button>
+        </div>
       </div>
 
       <div className="chat-list">
-
-        <div className="chat-item">
-          <img src="/avatars/farmer1.jpg" className="chat-avatar" alt="" />
-          <div className="chat-text">
-            <div className="chat-name">Banana Farm Advisory</div>
-            <div className="chat-preview">Last message preview…</div>
-          </div>
-        </div>
-
-        <div className="chat-item">
-          <img src="/avatars/farmer2.jpg" className="chat-avatar" alt="" />
-          <div className="chat-text">
-            <div className="chat-name">Soil Health Monitoring</div>
-            <div className="chat-preview">Last message preview…</div>
-          </div>
-        </div>
-
+        {savedChats.length === 0 ? (
+          <div className="chat-list-empty">No saved chats yet</div>
+        ) : (
+          savedChats.map((chat) => (
+            <div key={chat.id} className="chat-item">
+              <div className="chat-item-clickable" onClick={() => onChatSelect(chat)}>
+                <img
+                  src="/avatars/farmer3.jpg"
+                  className="chat-avatar"
+                  alt=""
+                />
+                <div className="chat-text">
+                  <div className="chat-name">{chat.name}</div>
+                  <div className="chat-preview">
+                    {new Date(chat.savedAt).toLocaleDateString()}
+                  </div>
+                </div>
+              </div>
+              <button
+                className="chat-delete"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onDeleteChat(chat.id);
+                }}
+                title="Delete chat"
+              >
+                ✕
+              </button>
+            </div>
+          ))
+        )}
       </div>
     </aside>
   );
