@@ -162,7 +162,7 @@ export default function Page() {
             )}
             <button
               className="header-btn"
-              onClick={() => exportChatToPDF(messages)}
+              onClick={async () => await exportChatToPDF(messages)}
               title="Download PDF"
             >
               <svg
