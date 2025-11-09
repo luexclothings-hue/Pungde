@@ -1,58 +1,83 @@
-import logging
+# agents/pungde_agent/sub_agents/agri_analyzer_agent/agri_analyzer_agent.py
 
-from google.adk.agents import LlmAgent
-from . import prompt
+import logging
+import os
 import requests
 
-import os
-# Set logging
+from google.adk.agents import LlmAgent
+from google.adk.tools.agent_tool import AgentTool
+
+from . import prompt
+
 logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
 
-# Configuration constants
-GEMINI_MODEL = "gemini-2.0-flash-live-preview-04-09"
-DESCRIPTION = "Agricultural analysis tool that retrieves crop yield predictions, location coordinates, and crop requirements for a given crop and location"
+# -----------------------------------------------------------------------------
+# Model selection
+# Use a **cheaper Flash model** here because this agent does NOT need Live/audio.
+# Will be overridden by environment if provided.
+# -----------------------------------------------------------------------------
+GEMINI_MODEL_SUB_AGENT = os.getenv(
+    "GEMINI_MODEL_SUB_AGENT",
+    "gemini-2.5-flash"     # Recommended default for sub-agents
+)
 
+DESCRIPTION = (
+    "Agricultural analysis sub-agent that retrieves yield predictions, "
+    "soil/crop requirements, and location-specific growing conditions."
+)
+
+# -----------------------------------------------------------------------------
+# TOOL IMPLEMENTATION
+# -----------------------------------------------------------------------------
 def get_crop_yield_prediction(crop_name: str, location_name: str) -> dict:
     """
-    Calls the prediction service and returns yield prediction along with crop requirements.
-    
-    Returns:
-        dict with keys: status, predicted_yield_tons_per_hectare, location_details, 
-        crop_name, crop_requirements (N, P, K, temperature, humidity, ph, rainfall), notes
+    Call the prediction microservice to fetch crop yield + requirements.
+    The PREDICTION_SERVICE_URL is configurable via environment.
     """
     url = os.getenv("PREDICTION_SERVICE_URL", "http://127.0.0.1:8001/predict")
+    payload = {"crop_name": crop_name, "location_name": location_name}
+
     try:
-        resp = requests.post(url, json={"crop_name": crop_name, "location_name": location_name}, timeout=30)
-        if resp.status_code == 200:
-            data = resp.json()
-            # The response now includes crop_requirements automatically
-            return data
-        else:
-            error_detail = resp.json().get("detail", "Unknown error") if resp.content else "Service unavailable"
-            return {"status": "error", "error_message": f"Prediction service error: {error_detail}"}
+        resp = requests.post(url, json=payload, timeout=30)
+        resp.raise_for_status()
+        return resp.json()  # expected keys already structured by your service
+
+    except requests.exceptions.HTTPError as e:
+        return {"status": "error", "error_message": f"HTTP error: {resp.text}"}
+
     except requests.exceptions.ConnectionError:
-        return {"status": "error", "error_message": "Could not connect to prediction service on port 8001."}
+        return {"status": "error", "error_message": f"Prediction service unavailable at {url}"}
+
     except requests.exceptions.Timeout:
         return {"status": "error", "error_message": "Prediction request timed out."}
+
     except Exception as e:
         return {"status": "error", "error_message": str(e)}
 
-# --- Screenplay Agent ---
+# -----------------------------------------------------------------------------
+# AGENT DEFINITION
+# -----------------------------------------------------------------------------
 agri_analyzer_agent = None
+
 try:
     agri_analyzer_agent = LlmAgent(
-        # Using a potentially different/cheaper model for a simple task
-        model=GEMINI_MODEL,
         name="agri_analyzer_agent",
-        description=(DESCRIPTION),
+        model=GEMINI_MODEL_SUB_AGENT,
+        description=DESCRIPTION,
         instruction=prompt.AGRI_ANALYZER_PROMPT,
-        output_key="agrianalysis",
-        tools=[
-            get_crop_yield_prediction
-        ]
+        output_key="agri_analysis",
+
+        # IMPORTANT: Wrap the function as a callable tool for the agent
+        tools=[AgentTool(get_crop_yield_prediction)],
     )
-    logger.info(f"✅ Agent '{agri_analyzer_agent.name}' created using model '{GEMINI_MODEL}'.")
+
+    logger.info(
+        f"✅ Sub-agent '{agri_analyzer_agent.name}' initialized "
+        f"using model '{GEMINI_MODEL_SUB_AGENT}'."
+    )
+
 except Exception as e:
     logger.error(
-        f"❌ Could not create Agri analyzer agent. Check API Key ({GEMINI_MODEL}). Error: {e}"
+        f"❌ Failed to initialize agri_analyzer_agent: {GEMINI_MODEL_SUB_AGENT} | {e}"
     )
