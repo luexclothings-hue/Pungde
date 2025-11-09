@@ -1,32 +1,53 @@
+# agents/pungde_agent/sub_agents/yield_improvement_agent/yield_improvement_agent.py
+
 import logging
+import os
 
 from google.adk.agents import LlmAgent
-from google.adk.tools import google_search
+from google.adk.tools import google_search  # Built-in ADK tool
 from . import prompt
 
-# Configuration constants
-GEMINI_MODEL = "gemini-2.0-flash-live-preview-04-09"
-DESCRIPTION = "Yield improvement expert that provides comprehensive strategies to maximize crop production including seed selection, spacing, fertilizer schedules, irrigation, and pest management"
-
-# Set logging
 logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
 
-# --- Screenplay Agent ---
+# -----------------------------------------------------------------------------
+# Model selection for sub-agent (reasoning only → no Live audio required)
+# -----------------------------------------------------------------------------
+GEMINI_MODEL_SUB_AGENT = os.getenv(
+    "GEMINI_MODEL_SUB_AGENT",
+    "gemini-2.5-flash"  # Optimal default
+)
+
+DESCRIPTION = (
+    "Yield improvement expert that provides strategies to maximize crop production "
+    "including seed selection, planting density, fertilizer planning, irrigation "
+    "schedules, pest management, and harvesting techniques."
+)
+
+# -----------------------------------------------------------------------------
+# LLM Sub-Agent
+# -----------------------------------------------------------------------------
 yield_improvement_agent = None
+
 try:
     yield_improvement_agent = LlmAgent(
-        # Using a potentially different/cheaper model for a simple task
-        model=GEMINI_MODEL,
         name="yield_improvement_agent",
-        description=(DESCRIPTION),
+        model=GEMINI_MODEL_SUB_AGENT,
+        description=DESCRIPTION,
         instruction=prompt.YIELD_IMPROVEMENT_PROMPT,
-        output_key="agrianalysis",
-        tools=[
-            google_search
-        ]
+
+        # Unique output key for clean aggregation in the parent agent
+        output_key="yield_improvement_recommendations",
+
+        # google_search is already structured correctly for ADK
+        tools=[google_search],
     )
-    logger.info(f"✅ Agent '{yield_improvement_agent.name}' created using model '{GEMINI_MODEL}'.")
+
+    logger.info(
+        f"✅ Sub-agent '{yield_improvement_agent.name}' initialized using model '{GEMINI_MODEL_SUB_AGENT}'."
+    )
+
 except Exception as e:
     logger.error(
-        f"❌ Could not create Agri analyzer agent. Check API Key ({GEMINI_MODEL}). Error: {e}"
+        f"❌ Failed to initialize yield_improvement_agent ({GEMINI_MODEL_SUB_AGENT}). Error: {e}"
     )
