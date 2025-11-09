@@ -5,7 +5,7 @@ from google.adk.tools import google_search
 from . import prompt
 
 # Configuration constants
-GEMINI_MODEL = "gemini-2.5-pro"
+GEMINI_MODEL = "gemini-2.5-flash"
 DESCRIPTION = "Grow anyway strategist that provides practical techniques and methods (polyhouse, irrigation, soil amendments, protective structures) to help farmers grow crops in unsuitable or challenging conditions"
 
 # Set logging
