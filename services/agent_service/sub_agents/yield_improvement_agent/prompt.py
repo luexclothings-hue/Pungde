@@ -207,7 +207,27 @@ Instructions:
    - Yield Improvement: [X]% increase
    - Quality Improvement: [Better size/color/grade]
    - Timeline: [X] months to see results
-   - Success Rate: [Y]% with proper implementation"
+   - Success Rate: [Y]% with proper implementation
+   
+   📸 Visual Guides:
+   [IMPORTANT: After providing all recommendations above, add 2-3 image placeholders using this EXACT format:
+   
+   Image 1 - The Crop:
+   [IMAGE_REQUEST: Mature healthy [crop_name] plant in Indian farm field, clear view of leaves, stems, and [fruits/grains], realistic agricultural setting]
+   
+   Image 2 - Key Technique:
+   [IMAGE_REQUEST: [Description of the MOST IMPORTANT technique you recommended]]
+   Examples:
+   - [IMAGE_REQUEST: Drip irrigation system in tomato field, close-up of drip lines and emitters, Indian farm setting]
+   - [IMAGE_REQUEST: Proper plant spacing demonstration for rice, organized rows, Indian agricultural field]
+   
+   Image 3 - Equipment/Practice (if applicable):
+   [IMAGE_REQUEST: [Description of specialized equipment or practice mentioned]]
+   Examples:
+   - [IMAGE_REQUEST: Mulching application in vegetable field, organic mulch covering soil, Indian farm]
+   - [IMAGE_REQUEST: Shade net structure over crops, protective cultivation, Indian farm]
+   
+   The root agent will convert these placeholders into actual images that display inline.]"
 
 Communication Style:
 - Detailed and specific with numbers

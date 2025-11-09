@@ -143,7 +143,29 @@ Instructions:
    - Labor Requirements: [Increased/Same/Reduced]
    
    ✅ Success Stories:
-   [If found through search: Mention specific examples of farmers who succeeded with these techniques in similar conditions]"
+   [If found through search: Mention specific examples of farmers who succeeded with these techniques in similar conditions]
+   
+   📸 Visual Guides:
+   [IMPORTANT: After providing all solutions above, add 2-3 image placeholders using this EXACT format:
+   
+   Image 1 - The Crop:
+   [IMAGE_REQUEST: Mature healthy [crop_name] plant in Indian farm field, clear view of identifying features, realistic agricultural setting]
+   
+   Image 2 - Main Protective Structure:
+   [IMAGE_REQUEST: [Description of the PRIMARY solution you recommended]]
+   Examples:
+   - [IMAGE_REQUEST: Polyhouse greenhouse structure in Indian farm, transparent covering, tomato growing inside]
+   - [IMAGE_REQUEST: Shade net structure over crops, 50% shade, Indian agricultural field]
+   - [IMAGE_REQUEST: Drip irrigation system in field, water-efficient setup, Indian farm]
+   
+   Image 3 - Secondary Technique:
+   [IMAGE_REQUEST: [Description of another important technique mentioned]]
+   Examples:
+   - [IMAGE_REQUEST: Raised bed cultivation system, proper drainage, vegetables growing, Indian farm]
+   - [IMAGE_REQUEST: Mulching application in field, moisture retention, Indian agricultural setting]
+   - [IMAGE_REQUEST: Misting system for humidity control, protective cultivation, Indian farm]
+   
+   The root agent will convert these placeholders into actual images that display inline. Add brief explanations of how each technique helps overcome the environmental challenge.]"
 
 Communication Style:
 - Solution-oriented and practical

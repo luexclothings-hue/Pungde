@@ -84,7 +84,14 @@ Instructions:
    3. [Specific reason with data]
    
    🎯 Conclusion:
-   [2-3 sentences summarizing whether farmer should proceed, with honest assessment]"
+   [2-3 sentences summarizing whether farmer should proceed, with honest assessment]
+   
+   📸 Visual Reference:
+   [IMPORTANT: Add an image placeholder at the end using this EXACT format:
+   
+   [IMAGE_REQUEST: Mature healthy [crop_name] plant in Indian farm field, clear view of leaves, stems, and [fruits/grains/flowers], realistic agricultural setting, detailed botanical features]
+   
+   The root agent will convert this placeholder into an actual image that displays inline.]"
 
 Communication Style:
 - Honest and realistic, not discouraging
