@@ -89,7 +89,6 @@ try:
         name="crop_suitability_agent",
         description=(DESCRIPTION),
         instruction=prompt.CROP_SUITABILITY_PROMPT,
-        stream=True, 
         output_key="agrianalysis",
         tools=[
             get_agroclimate_overview

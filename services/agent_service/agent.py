@@ -20,8 +20,7 @@ DESCRIPTION = "Friendly farming assistant that helps farmers with crop cultivati
 if agri_analyzer_agent:
     root_agent = LlmAgent(
         name="Pungde",
-        model=GEMINI_MODEL,
-        stream=True, 
+        model=GEMINI_MODEL, 
         description=(DESCRIPTION),
         instruction=prompt.PUNGDE_AGENT_PROMPT,
         tools=[AgentTool(agri_analyzer_agent), AgentTool(crop_suitability_agent), AgentTool(grow_anyways_agent), AgentTool(yield_improvement_agent)],
