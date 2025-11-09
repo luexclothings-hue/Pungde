@@ -1,0 +1,89 @@
+/* Base Layout & Reset */
+* { 
+  box-sizing: border-box; 
+}
+
+html, body { 
+  height: 100%; 
+  margin: 0; 
+  padding: 0; 
+}
+
+body { 
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+  background: #0f1115;
+  color: #e7e9ea;
+  overflow: hidden;
+}
+
+.shell {
+  display: flex;
+  height: 100vh;
+}
+
+/* Main Workspace */
+.main {
+  flex: 1;
+  overflow: auto;
+  background: #0f1115;
+}
+
+.page {
+  padding: 24px;
+}
+
+/* Loading & Error States */
+.loading-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(10,12,16,0.85);
+  backdrop-filter: blur(18px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  animation: fadeIn 0.35s ease;
+}
+
+/* Chat Area Loading (Session Creation) */
+.chat-loading-overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 360px;
+  background: rgba(10,12,16,0.85);
+  backdrop-filter: blur(18px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+  animation: fadeIn 0.35s ease;
+}
+
+.spinner {
+  width: 48px;
+  height: 48px;
+  border: 4px solid rgba(255,255,255,0.15);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.error-popup {
+  position: fixed;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255,80,80,0.18);
+  border: 1px solid rgba(255,100,100,0.35);
+  color: rgba(255,160,160,0.95);
+  padding: 14px 22px;
+  font-size: 0.9rem;
+  border-radius: 10px;
+  backdrop-filter: blur(12px);
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}

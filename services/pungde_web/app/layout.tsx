@@ -1,21 +1,40 @@
-import "./globals.css";
-import Sidebar from "@/components/Sidebar";
-import { SessionProvider } from "@/context/SessionContext";
+// layout.tsx
+"use client";
 
-export const metadata = {
-  title: "Pungde",
-  description: "Personal AI Farmer Assistant",
-};
+import { SessionProvider, useSession } from "@/context/SessionContext";
+import "./globals.css";
+
+function SessionGate({ children }: { children: React.ReactNode }) {
+  const { loading, error, retrySession } = useSession();
+
+  return (
+    <>
+      {error && (
+        <div className="error-popup">
+          {error}
+          <button onClick={retrySession} style={{ marginLeft: 12 }}>
+            Retry
+          </button>
+        </div>
+      )}
+      <div style={{ display: "flex", height: "100vh" }}>
+        {children}
+        {loading && (
+          <div className="chat-loading-overlay">
+            <div className="spinner"></div>
+          </div>
+        )}
+      </div>
+    </>
+  );
+}
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html>
       <body>
         <SessionProvider>
-          <div className="shell">
-            <Sidebar />
-            <main className="main">{children}</main>
-          </div>
+          <SessionGate>{children}</SessionGate>
         </SessionProvider>
       </body>
     </html>

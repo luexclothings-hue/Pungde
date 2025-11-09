@@ -14,16 +14,16 @@ export async function createSession(userId: string): Promise<string> {
   return data.id; // ✅ Correct key
 }
 
-export async function sendMessageStream({
+export async function sendMessage({
   userId,
   sessionId,
   text,
-  onToken,
+  onAgentResponse,
 }: {
   userId: string;
   sessionId: string;
   text: string;
-  onToken: (token: string) => void;
+  onAgentResponse: (response: string) => void;
 }) {
   const response = await fetch(`${API_BASE}/run_sse`, {
     method: "POST",
@@ -40,7 +40,7 @@ export async function sendMessageStream({
       newMessage: {
         role: "user",
         parts: [{ text }],
-      },
+      }
     }),
   });
 
@@ -51,7 +51,6 @@ export async function sendMessageStream({
 
   const reader = response.body.getReader();
   const decoder = new TextDecoder("utf-8");
-
   let buffer = "";
 
   while (true) {
@@ -59,8 +58,6 @@ export async function sendMessageStream({
     if (done) break;
 
     buffer += decoder.decode(value, { stream: true });
-
-    // split into lines; keep the last partial in buffer
     const lines = buffer.split("\n");
     buffer = lines.pop() ?? "";
 
@@ -73,28 +70,23 @@ export async function sendMessageStream({
       try {
         const json = JSON.parse(payload);
 
-        // case 1: token deltas
-        if (json?.delta?.text) {
-          onToken(json.delta.text);
-          continue;
-        }
-
-        // case 2: full message objects (your current server output)
-        if (json?.content?.parts?.length) {
-          const textParts = json.content.parts
-            .map((p: any) => p?.text)
-            .filter(Boolean)
+        // Only process complete (non-partial) messages
+        if (json.partial !== true && json.content?.parts?.length) {
+          const fullMessage = json.content.parts
+            .map((p: any) => p.text || "")
             .join("");
-          if (textParts) onToken(textParts);
-          continue;
+
+          if (fullMessage) {
+            onAgentResponse(fullMessage);
+          }
         }
 
-        // optionally: handle other shapes here if needed
-      } catch (e) {
-        // ignore non-JSON / keep streaming
+      } catch (err) {
+        // ignore JSON parsing errors for non-payload lines
       }
     }
   }
 }
+
 
 
