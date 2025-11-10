@@ -1,0 +1,18 @@
+<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background circle with gradient -->
+  <circle cx="20" cy="20" r="20" fill="url(#gradient)"/>
+  
+  <!-- Leaf design representing agriculture -->
+  <path d="M20 8C20 8 14 12 14 18C14 21 16 23 18 24C18 24 16 26 16 28C16 30 17.5 32 20 32C22.5 32 24 30 24 28C24 26 22 24 22 24C24 23 26 21 26 18C26 12 20 8 20 8Z" fill="white" opacity="0.95"/>
+  
+  <!-- Seed/grain detail -->
+  <circle cx="20" cy="20" r="2.5" fill="url(#gradient)" opacity="0.8"/>
+  
+  <!-- Gradient definition -->
+  <defs>
+    <linearGradient id="gradient" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+  </defs>
+</svg>

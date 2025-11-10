@@ -23,7 +23,7 @@ export default function Sidebar({
   return (
     <aside className={`sidebar ${isOpen ? 'open' : ''}`}>
       <div className="sidebar-header">
-        <span className="logo-text">Pungde</span>
+        <span className="logo-text">Pungda</span>
         <div className="sidebar-header-actions">
           <button className="new-chat-btn" onClick={onNewChat} disabled={loading}>
             + New Chat
@@ -41,9 +41,9 @@ export default function Sidebar({
             <div key={chat.id} className="chat-item">
               <div className="chat-item-clickable" onClick={() => onChatSelect(chat)}>
                 <img
-                  src="/avatars/farmer3.jpg"
+                  src="/pungda-logo.svg"
                   className="chat-avatar"
-                  alt=""
+                  alt="Pungda"
                 />
                 <div className="chat-text">
                   <div className="chat-name">{chat.name}</div>

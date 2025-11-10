@@ -32,7 +32,13 @@ function SessionGate({ children }: { children: React.ReactNode }) {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html>
+    <html lang="en">
+      <head>
+        <title>Pungda - AI Farming Assistant</title>
+        <meta name="description" content="Pungda is your intelligent farming companion, providing expert agricultural advice and support powered by AI." />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/pungda-icon.svg" type="image/svg+xml" />
+      </head>
       <body>
         <ThemeProvider>
           <SessionProvider>
