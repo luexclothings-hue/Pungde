@@ -36,7 +36,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <title>Pungda - AI Farming Assistant</title>
         <meta name="description" content="Pungda is your intelligent farming companion, providing expert agricultural advice and support powered by AI." />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
         <link rel="icon" href="/pungda-icon.svg" type="image/svg+xml" />
       </head>
       <body>
