@@ -2,7 +2,8 @@
 .modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.7);
+  background: var(--bg-secondary);
+  opacity: 0.95;
   backdrop-filter: blur(8px);
   display: flex;
   align-items: center;
@@ -13,37 +14,42 @@
 
 /* Save Modal */
 .modal-content {
-  background: linear-gradient(135deg, #0d0f14, #12141a);
-  border: 1px solid rgba(255,255,255,0.1);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-primary);
   border-radius: 16px;
   padding: 28px;
   width: 90%;
   max-width: 400px;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+  box-shadow: var(--shadow-lg);
 }
 
 .modal-title {
   font-size: 1.3rem;
   font-weight: 600;
   margin: 0 0 20px 0;
-  color: #fff;
+  color: var(--text-primary);
 }
 
 .modal-input {
   width: 100%;
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.14);
+  background: var(--surface-primary);
+  border: 1px solid var(--border-primary);
   border-radius: 10px;
   padding: 12px 16px;
   font-size: 0.95rem;
-  color: #e7e9ea;
+  color: var(--text-primary);
   outline: none;
   transition: 0.25s;
   margin-bottom: 20px;
 }
 
+.modal-input::placeholder {
+  color: var(--text-tertiary);
+}
+
 .modal-input:focus {
-  border-color: rgba(255,255,255,0.28);
+  border-color: var(--border-focus);
+  box-shadow: 0 0 0 3px var(--glow-primary);
 }
 
 .modal-actions {
@@ -59,26 +65,27 @@
   font-size: 0.9rem;
   cursor: pointer;
   transition: 0.25s;
-  border: 1px solid rgba(255,255,255,0.14);
+  border: 1px solid var(--border-primary);
 }
 
 .modal-btn-cancel {
-  background: rgba(255,255,255,0.08);
-  color: #e7e9ea;
+  background: var(--surface-primary);
+  color: var(--text-primary);
 }
 
 .modal-btn-cancel:hover {
-  background: rgba(255,255,255,0.12);
+  background: var(--surface-hover);
 }
 
 .modal-btn-save {
-  background: rgba(255,255,255,0.14);
-  color: #fff;
+  background: var(--surface-hover);
+  color: var(--text-primary);
   font-weight: 500;
 }
 
 .modal-btn-save:hover {
-  background: rgba(255,255,255,0.22);
+  background: var(--accent-primary);
+  color: var(--bg-primary);
 }
 
 .modal-btn-save:disabled {
@@ -88,15 +95,15 @@
 
 /* History Panel */
 .history-panel {
-  background: linear-gradient(135deg, #0d0f14, #12141a);
-  border: 1px solid rgba(255,255,255,0.1);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-primary);
   border-radius: 16px;
   width: 90%;
   max-width: 500px;
   max-height: 80vh;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+  box-shadow: var(--shadow-lg);
 }
 
 .history-header {
@@ -104,23 +111,23 @@
   justify-content: space-between;
   align-items: center;
   padding: 24px;
-  border-bottom: 1px solid rgba(255,255,255,0.08);
+  border-bottom: 1px solid var(--border-primary);
 }
 
 .history-title {
   font-size: 1.3rem;
   font-weight: 600;
   margin: 0;
-  color: #fff;
+  color: var(--text-primary);
 }
 
 .history-close {
   width: 36px;
   height: 36px;
   border-radius: 10px;
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.1);
-  color: rgba(255,255,255,0.5);
+  background: var(--surface-active);
+  border: 1px solid var(--border-primary);
+  color: var(--text-tertiary);
   cursor: pointer;
   transition: all 0.25s ease;
   font-size: 1.1rem;
@@ -128,15 +135,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  box-shadow: var(--shadow-sm);
 }
 
 .history-close:hover {
-  background: rgba(255,80,80,0.18);
-  border-color: rgba(255,80,80,0.3);
-  color: rgba(255,160,160,0.95);
+  background: var(--error-bg);
+  border-color: var(--error-border);
+  color: var(--error-text);
   transform: scale(1.05);
-  box-shadow: 0 3px 10px rgba(255,80,80,0.2);
+  box-shadow: var(--shadow-md);
 }
 
 .history-list {
@@ -148,7 +155,7 @@
 .history-empty {
   text-align: center;
   padding: 40px 20px;
-  color: rgba(255,255,255,0.4);
+  color: var(--text-tertiary);
   font-size: 0.9rem;
 }
 
@@ -158,15 +165,15 @@
   gap: 12px;
   padding: 14px 16px;
   margin-bottom: 8px;
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.08);
+  background: var(--surface-active);
+  border: 1px solid var(--border-secondary);
   border-radius: 12px;
   transition: 0.25s;
 }
 
 .history-item:hover {
-  background: rgba(255,255,255,0.08);
-  border-color: rgba(255,255,255,0.12);
+  background: var(--surface-primary);
+  border-color: var(--border-primary);
 }
 
 .history-item-info {
@@ -177,35 +184,35 @@
 .history-item-name {
   font-size: 0.95rem;
   font-weight: 500;
-  color: #fff;
+  color: var(--text-primary);
   margin-bottom: 4px;
 }
 
 .history-item-date {
   font-size: 0.8rem;
-  color: rgba(255,255,255,0.5);
+  color: var(--text-secondary);
 }
 
 .history-item-delete {
   width: 36px;
   height: 36px;
   border-radius: 8px;
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.1);
-  color: rgba(255,255,255,0.5);
+  background: var(--surface-active);
+  border: 1px solid var(--border-primary);
+  color: var(--text-tertiary);
   cursor: pointer;
   transition: all 0.25s ease;
   font-size: 1.1rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  box-shadow: var(--shadow-sm);
 }
 
 .history-item-delete:hover {
-  background: rgba(255,80,80,0.18);
-  border-color: rgba(255,80,80,0.3);
-  color: rgba(255,160,160,0.95);
+  background: var(--error-bg);
+  border-color: var(--error-border);
+  color: var(--error-text);
   transform: scale(1.05);
-  box-shadow: 0 3px 10px rgba(255,80,80,0.2);
+  box-shadow: var(--shadow-md);
 }
