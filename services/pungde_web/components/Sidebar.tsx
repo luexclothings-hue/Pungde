@@ -1,6 +1,7 @@
 "use client";
 import { useSession } from "@/context/SessionContext";
 import { SavedChat } from "@/lib/chatStorage";
+import ThemeToggle from "./ThemeToggle";
 
 interface SidebarProps {
   savedChats: SavedChat[];
@@ -29,6 +30,8 @@ export default function Sidebar({
           </button>
         </div>
       </div>
+
+      <ThemeToggle />
 
       <div className="chat-list">
         {savedChats.length === 0 ? (

@@ -2,6 +2,7 @@
 "use client";
 
 import { SessionProvider, useSession } from "@/context/SessionContext";
+import { ThemeProvider } from "@/context/ThemeContext";
 import "./globals.css";
 
 function SessionGate({ children }: { children: React.ReactNode }) {
@@ -33,9 +34,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html>
       <body>
-        <SessionProvider>
-          <SessionGate>{children}</SessionGate>
-        </SessionProvider>
+        <ThemeProvider>
+          <SessionProvider>
+            <SessionGate>{children}</SessionGate>
+          </SessionProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

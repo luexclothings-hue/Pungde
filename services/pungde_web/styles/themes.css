@@ -1,0 +1,235 @@
+/* ============================================
+   THEME SYSTEM - Professional Color Palettes
+   ============================================ */
+
+/* CSS Variables for each theme */
+:root[data-theme="dark"],
+:root {
+  /* Premium Dark Theme - Apple/Uber Inspired */
+  --bg-primary: #0f1115;
+  --bg-secondary: #0a0c10;
+  --bg-tertiary: #0d0f14;
+  --bg-elevated: linear-gradient(135deg, #0a0c10, #0d0f14);
+  
+  --surface-primary: rgba(255, 255, 255, 0.08);
+  --surface-hover: rgba(255, 255, 255, 0.14);
+  --surface-active: rgba(255, 255, 255, 0.06);
+  
+  --border-primary: rgba(255, 255, 255, 0.08);
+  --border-secondary: rgba(255, 255, 255, 0.05);
+  --border-focus: rgba(255, 255, 255, 0.2);
+  
+  --text-primary: #e7e9ea;
+  --text-secondary: rgba(255, 255, 255, 0.5);
+  --text-tertiary: rgba(255, 255, 255, 0.4);
+  
+  --accent-primary: #ffffff;
+  --accent-secondary: rgba(255, 255, 255, 0.12);
+  
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.4);
+  
+  --glow-primary: rgba(255, 255, 255, 0.08);
+  --glow-secondary: rgba(255, 255, 255, 0.04);
+  
+  --error-bg: rgba(255, 80, 80, 0.18);
+  --error-border: rgba(255, 100, 100, 0.35);
+  --error-text: rgba(255, 160, 160, 0.95);
+}
+
+:root[data-theme="farmer"] {
+  /* Farmer's Earth Theme - Nature Inspired */
+  --bg-primary: #1a2410;
+  --bg-secondary: #141c0c;
+  --bg-tertiary: #1f2d14;
+  --bg-elevated: linear-gradient(135deg, #2d5016, #1f3a10);
+  
+  --surface-primary: rgba(139, 195, 74, 0.12);
+  --surface-hover: rgba(139, 195, 74, 0.18);
+  --surface-active: rgba(139, 195, 74, 0.08);
+  
+  --border-primary: rgba(139, 195, 74, 0.2);
+  --border-secondary: rgba(139, 195, 74, 0.12);
+  --border-focus: rgba(139, 195, 74, 0.4);
+  
+  --text-primary: #e8f5e1;
+  --text-secondary: rgba(200, 230, 180, 0.7);
+  --text-tertiary: rgba(180, 210, 160, 0.5);
+  
+  --accent-primary: #8bc34a;
+  --accent-secondary: rgba(139, 195, 74, 0.2);
+  
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.5);
+  
+  --glow-primary: rgba(139, 195, 74, 0.15);
+  --glow-secondary: rgba(139, 195, 74, 0.08);
+  
+  --error-bg: rgba(255, 87, 34, 0.18);
+  --error-border: rgba(255, 112, 67, 0.35);
+  --error-text: rgba(255, 171, 145, 0.95);
+}
+
+:root[data-theme="light"] {
+  /* Light Professional Theme - Google/Apple Light */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --bg-tertiary: #f1f3f5;
+  --bg-elevated: linear-gradient(135deg, #ffffff, #f8f9fa);
+  
+  --surface-primary: rgba(0, 0, 0, 0.04);
+  --surface-hover: rgba(0, 0, 0, 0.08);
+  --surface-active: rgba(0, 0, 0, 0.02);
+  
+  --border-primary: rgba(0, 0, 0, 0.1);
+  --border-secondary: rgba(0, 0, 0, 0.06);
+  --border-focus: rgba(0, 0, 0, 0.2);
+  
+  --text-primary: #1a1a1a;
+  --text-secondary: rgba(0, 0, 0, 0.6);
+  --text-tertiary: rgba(0, 0, 0, 0.4);
+  
+  --accent-primary: #1a73e8;
+  --accent-secondary: rgba(26, 115, 232, 0.1);
+  
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 2px 8px rgba(0, 0, 0, 0.12);
+  --shadow-lg: 0 4px 16px rgba(0, 0, 0, 0.16);
+  
+  --glow-primary: rgba(26, 115, 232, 0.08);
+  --glow-secondary: rgba(26, 115, 232, 0.04);
+  
+  --error-bg: rgba(220, 53, 69, 0.1);
+  --error-border: rgba(220, 53, 69, 0.3);
+  --error-text: #c82333;
+}
+
+/* ============================================
+   THEME TOGGLE COMPONENT STYLES
+   ============================================ */
+
+.theme-toggle-container {
+  padding: 20px;
+  border-bottom: 1px solid var(--border-secondary);
+}
+
+.theme-toggle-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-tertiary);
+  margin-bottom: 12px;
+}
+
+.theme-options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.theme-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 12px;
+  background: var(--surface-active);
+  border: 1.5px solid var(--border-secondary);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.theme-option::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--glow-primary);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.theme-option:hover::before {
+  opacity: 1;
+}
+
+.theme-option:hover {
+  border-color: var(--border-primary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.theme-option.active {
+  background: var(--surface-primary);
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 3px var(--accent-secondary);
+}
+
+.theme-preview {
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  z-index: 1;
+}
+
+.theme-icon {
+  font-size: 1.5rem;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+.theme-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  position: relative;
+  z-index: 1;
+}
+
+.theme-name {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.theme-desc {
+  font-size: 0.75rem;
+  color: var(--text-tertiary);
+}
+
+.theme-check {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--accent-primary);
+  color: var(--bg-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  animation: scaleIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes scaleIn {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

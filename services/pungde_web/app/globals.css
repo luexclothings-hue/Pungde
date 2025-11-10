@@ -1,6 +1,9 @@
 /* Pungde Web - Main Stylesheet */
 /* Modular CSS Architecture for better maintainability */
 
+/* Theme System - Must be first */
+@import '../styles/themes.css';
+
 /* Base styles & reset */
 @import '../styles/base.css';
 

@@ -13,8 +13,8 @@
   align-items: center;
   gap: 14px;
   padding: 16px 24px;
-  background: linear-gradient(135deg, #0a0c10, #0d0f14);
-  border-bottom: 1px solid rgba(255,255,255,0.08);
+  background: var(--bg-elevated);
+  border-bottom: 1px solid var(--border-primary);
   backdrop-filter: blur(14px);
   flex-shrink: 0;
 }
@@ -24,11 +24,9 @@
   height: 42px;
   border-radius: 50%;
   object-fit: cover;
-  border: 1.5px solid rgba(255,255,255,0.12);
-  background: radial-gradient(circle at 30% 30%, #ffffff22, #00000044);
-  box-shadow:
-    0 0 12px rgba(255,255,255,0.08),
-    0 3px 14px rgba(0,0,0,0.4);
+  border: 1.5px solid var(--border-primary);
+  background: var(--surface-primary);
+  box-shadow: var(--shadow-sm), 0 0 12px var(--glow-primary);
   flex-shrink: 0;
 }
 
@@ -41,7 +39,7 @@
 .header-name {
   font-size: 1rem;
   font-weight: 600;
-  color: #fff;
+  color: var(--text-primary);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -49,7 +47,7 @@
 
 .header-status {
   font-size: 0.8rem;
-  color: rgba(255,255,255,0.5);
+  color: var(--text-secondary);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -66,27 +64,27 @@
   width: 40px;
   height: 40px;
   border-radius: 10px;
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.12);
-  color: #e7e9ea;
+  background: var(--surface-primary);
+  border: 1px solid var(--border-primary);
+  color: var(--text-primary);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   transition: all 0.25s ease;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  box-shadow: var(--shadow-sm);
 }
 
 .header-btn:hover {
-  background: rgba(255,255,255,0.14);
-  border-color: rgba(255,255,255,0.2);
+  background: var(--surface-hover);
+  border-color: var(--border-focus);
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  box-shadow: var(--shadow-md);
 }
 
 .header-btn:active {
   transform: translateY(0);
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  box-shadow: var(--shadow-sm);
 }
 
 /* Mobile Menu Button */
@@ -95,18 +93,18 @@
   width: 40px;
   height: 40px;
   border-radius: 10px;
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.12);
-  color: #e7e9ea;
+  background: var(--surface-primary);
+  border: 1px solid var(--border-primary);
+  color: var(--text-primary);
   align-items: center;
   justify-content: center;
   cursor: pointer;
   transition: all 0.25s ease;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  box-shadow: var(--shadow-sm);
   margin-right: 8px;
 }
 
 .menu-btn:hover {
-  background: rgba(255,255,255,0.14);
-  border-color: rgba(255,255,255,0.2);
+  background: var(--surface-hover);
+  border-color: var(--border-focus);
 }
