@@ -89,7 +89,7 @@ Instructions:
    📸 Visual Reference:
    [IMPORTANT: Add an image placeholder at the end using this EXACT format:
    
-   [IMAGE_REQUEST: Mature healthy [crop_name] plant in Indian farm field, clear view of leaves, stems, and [fruits/grains/flowers], realistic agricultural setting, detailed botanical features]
+   [IMAGE_REQUEST: Mature healthy [crop_name] plant in farm field, clear view of leaves, stems, and [fruits/grains/flowers], realistic agricultural setting, detailed botanical features]
    
    The root agent will convert this placeholder into an actual image that displays inline.]"
 
