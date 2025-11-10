@@ -1,6 +1,7 @@
 {
-  "name": "pungde_web",
+  "name": "pungda-web",
   "version": "0.1.0",
+  "description": "Pungda - AI Farming Assistant",
   "private": true,
   "scripts": {
     "dev": "next dev",

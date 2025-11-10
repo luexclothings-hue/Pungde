@@ -39,6 +39,15 @@
   margin-top: 4px;
 }
 
+/* AI Avatar (Logo) */
+.message-avatar.ai-avatar {
+  border: none;
+  background: transparent;
+  box-shadow: none;
+  filter: drop-shadow(0 2px 8px rgba(16, 185, 129, 0.3));
+  padding: 2px;
+}
+
 /* Message Bubble */
 .bubble {
   padding: 14px 18px;

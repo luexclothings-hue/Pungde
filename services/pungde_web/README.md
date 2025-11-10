@@ -1,4 +1,6 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Pungda Web - AI Farming Assistant
+
+Pungda is an intelligent farming companion that provides expert agricultural advice and support powered by AI. This is the web interface built with Next.js.
 
 ## Getting Started
 
@@ -18,7 +20,14 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Features
+
+- 🌾 AI-powered farming advice and support
+- 💬 Real-time chat interface with markdown support
+- 💾 Save and manage chat history
+- 📄 Export conversations to PDF
+- 🎨 Multiple themes (Dark, Light, Farmer)
+- 📱 Responsive design for mobile and desktop
 
 ## Learn More
 

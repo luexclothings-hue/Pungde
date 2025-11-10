@@ -10,7 +10,7 @@ import SaveChatModal from "@/components/SaveChatModal";
 import ReactMarkdown from "react-markdown";
 
 export default function Page() {
-  const { sessionId, userId } = useSession();
+  const { sessionId, userId, startNewSession } = useSession();
   const [messages, setMessages] = useState<
     { role: "user" | "assistant"; content: string }[]
   >([]);
@@ -31,7 +31,7 @@ export default function Page() {
     setMessages([
       {
         role: "assistant",
-        content: "Namaste 👋 I am Pungde. How can I support your farming today?",
+        content: "Namaste 👋 I am Pungda. How can I support your farming today?",
       },
     ]);
   }, [sessionId]);
@@ -52,10 +52,13 @@ export default function Page() {
     setMessages([
       {
         role: "assistant",
-        content: "Namaste 👋 I am Pungde. How can I support your farming today?",
+        content: "Namaste 👋 I am Pungda. How can I support your farming today?",
       },
     ]);
     setSidebarOpen(false);
+    
+    // Create new session with backend
+    startNewSession();
   };
 
   const handleDeleteChat = (id: string) => {
@@ -128,10 +131,15 @@ export default function Page() {
               <line x1="3" y1="18" x2="21" y2="18" />
             </svg>
           </button>
-          <img src="/avatars/farmer3.jpg" className="header-avatar" alt="Pungde" />
+          <img src="/pungda-logo.svg" className="header-logo" alt="Pungda Logo" />
           <div className="header-info">
             <div className="header-name">
-              {viewingHistory || "Pungde"}
+              {viewingHistory || (
+                <>
+                  Pungda
+                  <span className="beta-tag">BETA</span>
+                </>
+              )}
             </div>
             <div className="header-status">
               {viewingHistory ? "Saved Chat" : "AI Farming Assistant"}
@@ -194,7 +202,7 @@ export default function Page() {
         {messages.map((msg, i) => (
           <div key={i} className={`message ${msg.role}`}>
             {msg.role === "assistant" && (
-              <img src="/avatars/farmer3.jpg" className="message-avatar" alt="Pungde" />
+              <img src="/pungda-logo.svg" className="message-avatar ai-avatar" alt="Pungda" />
             )}
             <div className="bubble">
               {msg.role === "assistant" ? (
@@ -212,7 +220,7 @@ export default function Page() {
         {/* Typing Indicator */}
         {isSending && (
           <div className="message assistant">
-            <img src="/avatars/farmer3.jpg" className="message-avatar" alt="Pungde" />
+            <img src="/pungda-logo.svg" className="message-avatar ai-avatar" alt="Pungda" />
             <div className="bubble typing-bubble">
               <span className="typing-dot"></span>
               <span className="typing-dot"></span>
@@ -226,7 +234,7 @@ export default function Page() {
           <form className="input-bar" onSubmit={send}>
             <input
               type="text"
-              placeholder="Message Pungde..."
+              placeholder="Message Pungda..."
               value={input}
               onChange={(e) => setInput(e.target.value)}
               disabled={isSending}

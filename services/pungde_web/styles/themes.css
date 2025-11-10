@@ -39,37 +39,44 @@
 }
 
 :root[data-theme="farmer"] {
-  /* Farmer's Earth Theme - Nature Inspired */
-  --bg-primary: #1a2410;
-  --bg-secondary: #141c0c;
-  --bg-tertiary: #1f2d14;
-  --bg-elevated: linear-gradient(135deg, #2d5016, #1f3a10);
+  /* Luxurious Farmer's Earth Theme - Rich Natural Colors */
+  /* Inspired by fertile soil, lush fields, and golden harvests */
   
-  --surface-primary: rgba(139, 195, 74, 0.12);
-  --surface-hover: rgba(139, 195, 74, 0.18);
-  --surface-active: rgba(139, 195, 74, 0.08);
+  --bg-primary: #1a1f15;           /* Rich dark soil */
+  --bg-secondary: #141810;         /* Deep earth */
+  --bg-tertiary: #232b1e;          /* Forest floor */
+  --bg-elevated: linear-gradient(135deg, #2d3a24, #1f2819);
   
-  --border-primary: rgba(139, 195, 74, 0.2);
-  --border-secondary: rgba(139, 195, 74, 0.12);
-  --border-focus: rgba(139, 195, 74, 0.4);
+  --surface-primary: rgba(139, 195, 74, 0.15);   /* Vibrant leaf glow */
+  --surface-hover: rgba(139, 195, 74, 0.22);     /* Brighter on hover */
+  --surface-active: rgba(139, 195, 74, 0.1);     /* Subtle active */
   
-  --text-primary: #e8f5e1;
-  --text-secondary: rgba(200, 230, 180, 0.7);
-  --text-tertiary: rgba(180, 210, 160, 0.5);
+  --border-primary: rgba(139, 195, 74, 0.25);    /* Bright leaf border */
+  --border-secondary: rgba(139, 195, 74, 0.15);  /* Subtle leaf border */
+  --border-focus: #8bc34a;                       /* Vibrant focus */
   
-  --accent-primary: #8bc34a;
+  --text-primary: #e8f5e1;         /* Fresh morning dew */
+  --text-secondary: #b8d4a8;       /* Soft sage */
+  --text-tertiary: rgba(184, 212, 168, 0.7);
+  
+  --accent-primary: #8bc34a;       /* Vibrant leaf green */
   --accent-secondary: rgba(139, 195, 74, 0.2);
   
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
-  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
-  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.5);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.6);
   
-  --glow-primary: rgba(139, 195, 74, 0.15);
-  --glow-secondary: rgba(139, 195, 74, 0.08);
+  --glow-primary: rgba(139, 195, 74, 0.2);       /* Strong green glow */
+  --glow-secondary: rgba(139, 195, 74, 0.12);    /* Subtle glow */
   
-  --error-bg: rgba(255, 87, 34, 0.18);
-  --error-border: rgba(255, 112, 67, 0.35);
-  --error-text: rgba(255, 171, 145, 0.95);
+  --error-bg: rgba(255, 138, 101, 0.18);
+  --error-border: rgba(255, 138, 101, 0.35);
+  --error-text: #ffab91;
+  
+  /* Additional nature-inspired colors */
+  --harvest-gold: #ffd54f;         /* Golden wheat */
+  --earth-brown: #6d4c41;          /* Rich soil */
+  --sky-blue: #81c784;             /* Clear sky */
 }
 
 :root[data-theme="light"] {
